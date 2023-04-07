@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/vue.js"></script>
+    <script src="js/index.js"></script>
+    <link rel="icon" href="material/lemon.svg">
+    <title>SCLemon ｜ My Pesonal Pages</title>
+    <!-- Vanta.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
+    <!-- fontAwesome -->
+    <script src="https://kit.fontawesome.com/026fbb8b51.js" crossorigin="anonymous"></script>
+     
+</head>
+<body id="bg">
+    <div class="box" id="box">
+        <div class="banner_border">
+        </div>
+        <div class="banner">
+            <div class="img-all" id="img-all">
+                <img v-for="b in bannerArr" :src="b.src" alt="">
+            </div>
+            <div class="block-all">
+                <div v-for="b in bannerArr" class="block" name="block" @click="changeImg(b.id)"></div>
+            </div>
+        </div>
+        <div class="main-all">
+            <!-- 未使用 VueJS -->
+            <div class="column">
+                <div class="person">
+                    <div class="person-img">
+                        <img src="column/person2.jpeg" alt="">
+                    </div>
+                    <div class="intro">
+                        <p>Your Name</p>
+                    </div>
+                </div>
+                <!-- 下拉式選單 -->
+                <div class="list">
+                    <div class="list-c">
+                        <h1>自我介紹</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="list-text">
+                            <!-- 自我介紹輸入區 -->
+                            ~~~~~~~~~~
+                        </div>
+                    </div>
+                    <div class="list-c">
+                        <h1>就讀學校</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="list-text">
+                            <!-- 校徽 src -->
+                            <div class="schoolImg"><img src="" alt=""></div>
+                            <p class="schoolInfo">國立ＸＸ大學</p>
+                            <!-- 校徽 src -->
+                            <div class="schoolImg2"><img src="" alt=""></div>
+                            <p class="schoolInfo">國立ＸＸ高級中學</p>
+                        </div>
+                    </div>
+                    <div class="list-c">
+                        <h1>個人專長</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="list-text">
+                            <!-- talent picture src -->
+                            <div class="schoolImg"><img src="" alt=""></div>
+                            <p class="schoolInfo">talent Name</p>
+                        </div>
+                    </div>
+                    <div class="list-c">
+                        <h1>國際認證</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="list-text">
+                            <!-- badge src -->
+                            <div class="schoolImg"><img src="" alt=""></div>
+                            <p class="schoolInfo">badge Name</p>
+                        </div>
+                    </div>
+                    <div class="list-c">
+                        <h1>他人評價</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="list-text">
+                               <!-- 輸入文字 -->
+                               ～～～
+                               <!-- 分隔線 -->
+                                <div class="split"></div>
+                               <!-- 輸入文字 -->
+                               ～～～
+                               <!-- 分隔線 -->
+                                <div class="split"></div>
+                               <!-- 輸入文字 -->
+                               ～～～
+                               <!-- 分隔線 -->
+                                <div class="split"></div>
+                                <!-- link for more information -->
+                                查看更多：<a href="" target="_blank">點擊連結</a>
+                        </div>
+                    </div>
+                    <div class="list-c">
+                        <h1>聯絡方式</h1>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="list-text">
+                            <div class="schoolImg"><img src="material/man.png" alt=""></div>
+                            <p class="call">
+                                電子信箱：XXXXXXXX@gmail.com <br>
+                                FaceBook: XXX <br>
+                                Instagram:  XXXXXXX  <br>
+                                Github:    XXXXXX <br>
+                                聯絡時間：XX:XXpm ~ XX:XXpm
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- PT 列表 -->
+                <div class="pt">
+                    <h1>Partner</h1>
+                    <div class="pt-ct">
+                        <div class="pt-img" v-for="obj in pt">
+                            <img :src="obj.src" :alt="obj.name">
+                        </div>
+                    </div>
+                </div>
+                <!-- 留言板  VueJS -->
+                <div class="msg">
+                    <h1>訪客留言板</h1>
+                    <div class="output">
+                        <div v-for="out in outputMsg" v-text="out"></div>
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="請輸入文字" required v-model="inputMsg">
+                        <i class="fa-regular fa-paper-plane" @click="sendEnabled?sendMsg():''"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- 下方使用 VueJS -->
+            <div class="main" id="main">
+                <!-- 橫欄 -->
+                <div class="row">
+                    <div class="row-c" @click="changeMainIndex(1)">標題一</div>
+                    <div class="row-c" @click="changeMainIndex(2)">標題二</div>
+                    <div class="row-c" @click="changeMainIndex(3)">標題三</div>
+                    <div class="row-c" @click="changeMainIndex(4)">標題四</div>
+                </div>
+                <div id="content-all">
+                    <div class="content" v-if="main_index==1" v-for="obj in post">
+                        <div class="img">
+                            <div :id="obj.id" class="img-car">
+                                <img v-for="sr in obj.img" :src="sr">
+                            </div>
+                            <div class="arrow">
+                                <img src="material/down.png" alt="" class="right" @click="contentImg(obj.id,obj.img,1)">
+                                <img src="material/down.png" alt="" class="left" @click="contentImg(obj.id,obj.img,2)">
+                            </div>
+                        </div>
+                        <div class="text">
+                            <a target="_blank" :href="obj.link" v-text="obj.event"></a>
+                            <p v-text="obj.content"></p>
+                            <span>時間：<span v-text="obj.date"></span></span>
+                        </div>
+                    </div>
+                    <div class="content" v-if="main_index==2" v-for="obj in project">
+                        <div class="img">
+                            <div :id="obj.id" class="img-car">
+                                <img v-for="sr in obj.img" :src="sr">
+                            </div>
+                            <div class="arrow">
+                                <img src="material/down.png" alt="" class="right" @click="contentImg(obj.id,obj.img,1)">
+                                <img src="material/down.png" alt="" class="left" @click="contentImg(obj.id,obj.img,2)">
+                            </div>
+                        </div>
+                        <div class="text">
+                            <a target="_blank" :href="obj.link" v-text="obj.event"></a>
+                            <p v-text="obj.content"></p>
+                            <span>時間：<span v-text="obj.date"></span></span>
+                        </div>
+                    </div>
+                    <div class="content" v-if="main_index==3" v-for="obj in record">
+                        <div class="img">
+                            <div :id="obj.id" class="img-car">
+                                <img v-for="sr in obj.img" :src="sr">
+                            </div>
+                            <div class="arrow">
+                                <img src="material/down.png" alt="" class="right" @click="contentImg(obj.id,obj.img,1)">
+                                <img src="material/down.png" alt="" class="left" @click="contentImg(obj.id,obj.img,2)">
+                            </div>
+                        </div>
+                        <div class="text">
+                            <a target="_blank" :href="obj.link" v-text="obj.event"></a>
+                            <p v-text="obj.content"></p>
+                            <span>時間：<span v-text="obj.date"></span></span>
+                        </div>
+                    </div>
+                    <div class="content" v-if="main_index==4" v-for="obj in content">
+                        <div class="img">
+                            <div :id="obj.id" class="img-car">
+                                <img v-for="sr in obj.img" :src="sr">
+                            </div>
+                            <div class="arrow">
+                                <img src="material/down.png" alt="" class="right" @click="contentImg(obj.id,obj.img,1)">
+                                <img src="material/down.png" alt="" class="left" @click="contentImg(obj.id,obj.img,2)">
+                            </div>
+                        </div>
+                        <div class="text">
+                            <a target="_blank" :href="obj.link" v-text="obj.event"></a>
+                            <p v-text="obj.content"></p>
+                            <span>時間：<span v-text="obj.date"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="start">
+            <h1><i class="fa-solid fa-heart fa-beat"></i> 第 <span v-text="startTime"></span> 天</h1>
+            <div @click="sendMail()" id="mod" class="mod">取得模板</div>
+        </div>
+    </div>
+    </body>
+<script>
+    VANTA.BIRDS({
+    el: "#bg",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 1055.00,
+    minWidth: 1440.00,
+    scale: 2.00,
+    scaleMobile: 2.00,
+    backgroundColor: 0x7192f,
+    color1: 0xf22626,
+    birdSize: 0.60,
+    wingSpan: 3.00,
+    speedLimit: 6.00,
+    separation: 50.00,
+    cohesion: 10.00
+    })
+</script>
+</html>
